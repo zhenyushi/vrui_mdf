@@ -33,7 +33,7 @@
 	(this package is based on Kinetic, not indigo, need to change the counterpart when installing)
 
 ### Hector_quadrotor:
-	~~~
+
 	$ source /opt/ros/kinetic/setup.bash
 	$ sudo apt install ros-kinetic-joystick-drivers ros-kinetic-teleop-twist-keyboard
 	$ mkdir ~/catkin_ws/src
@@ -41,7 +41,7 @@
 	$ cd ~/catkin_ws
 	$ catkin_make
 	$ source devel/setup.bash
-	~~~
+
 ### Other packages:
 
 	ROS installation tutorial: http://wiki.ros.org/kinetic/Installation/Ubuntu
@@ -62,12 +62,10 @@
 	
 ### Before implementation:
 
-	copy all files under vrui_mdf/models to ~/.gazebo/models
-
 	build the tracking node:
 
 	$cd vrui_mdf/scripts
-	
+
 	$chmod +x cod_edi.py
 
 	$cd ~/catkin_ws
