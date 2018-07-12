@@ -2,7 +2,7 @@
 "Vrui modified" for use with HTC Vive and ROS + Gazebo 
 
 
-### Figur for implementation(algorithm?)
+### Figur for implementation
 
 ![figure_1](https://user-images.githubusercontent.com/24307076/42660737-0c8e63b0-85fa-11e8-95ff-bbf9ec9a4d53.png)
 
