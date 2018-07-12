@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<launch>
+
+	 <!-- "RunViveTracker.sh" -->
+         <node name="Vrui_server" pkg="vrui_mdf" type="Vrui_server"/>
+
+	 <!-- node that talks to xbox controller -->
+	 <node name="joy_node" pkg="joy" type="joy_node"/>
+
+	 <!-- Start Gazebo with wg world running in (max) realtime -->
+	 <include file="$(find hector_gazebo_worlds)/launch/start.launch"/>
+
+	 <!-- Spawn simulated quadrotor uav -->
+	 <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch" >
+	    <arg name="model" value="$(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro"/>
+	    <arg name="controllers" value="
+		controller/attitude
+		controller/velocity
+		controller/position
+		"/>
+	 </include>
+
+	 <!-- talk to vrui server -->
+         <node name="tracking" pkg="vrui_mdf" type="tracking"/>
+
+         <!-- display for Vive HMD -->
+         <node name="imagesub" pkg="vrui_mdf" type="imagesub"/>
+
+         <!-- use xbox controller to control the robot -->
+         <node name="joy_hector" pkg="vrui_mdf" type="joy_hector"/>
+
+</launch>

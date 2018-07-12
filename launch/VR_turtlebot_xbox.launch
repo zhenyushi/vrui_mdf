@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<launch>
+
+	 <!-- "RunViveTracker.sh" -->
+         <node name="Vrui_server" pkg="vrui_mdf" type="Vrui_server"/>
+
+	 <!-- node that talks to xbox controller -->
+	 <node name="joy_node" pkg="joy" type="joy_node"/>
+
+	 <!-- turtlebot world -->
+         <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch"/>
+
+	 <!-- talk to vrui server -->
+         <node name="tracking" pkg="vrui_mdf" type="tracking"/>
+
+         <!-- display for Vive HMD -->
+         <node name="imagesub" pkg="vrui_mdf" type="imagesub"/>
+
+         <!-- use xbox controller to control the robot -->
+         <node name="controllers_joy" pkg="vrui_mdf" type="controllers_joy"/>
+
+	 <!-- spawn model for controller.cpp -->
+	 <node name="spawn_model_liftcontroller" pkg="gazebo_ros" type="spawn_model"
+	 args="-file $(find vrui_mdf)/models/controller/model.sdf -sdf -model waypoint 
+	 -x 0 -y 0 -z 1" output="screen" />
+
+</launch>
