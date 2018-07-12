@@ -33,15 +33,15 @@
 	(this package is based on Kinetic, not indigo, need to change the counterpart when installing)
 
 ### Hector_quadrotor:
-
-	source /opt/ros/kinetic/setup.bash
-	sudo apt install ros-kinetic-joystick-drivers ros-kinetic-teleop-twist-keyboard
-	mkdir ~/catkin_ws/src
-	rosinstall ~/catkin_ws/src /opt/ros/kinetic https://raw.githubusercontent.com/AS4SR/hector_quadrotor/kinetic-devel/tutorials.rosinstall
-	cd ~/catkin_ws
-	catkin_make
-	source devel/setup.bash
-
+	~~~
+	$ source /opt/ros/kinetic/setup.bash
+	$ sudo apt install ros-kinetic-joystick-drivers ros-kinetic-teleop-twist-keyboard
+	$ mkdir ~/catkin_ws/src
+	$ rosinstall ~/catkin_ws/src /opt/ros/kinetic https://raw.githubusercontent.com/AS4SR/hector_quadrotor/kinetic-devel/tutorials.rosinstall
+	$ cd ~/catkin_ws
+	$ catkin_make
+	$ source devel/setup.bash
+	~~~
 ### Other packages:
 
 	ROS installation tutorial: http://wiki.ros.org/kinetic/Installation/Ubuntu
