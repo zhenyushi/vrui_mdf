@@ -208,14 +208,6 @@ target_link_libraries (controllers_joy LINK_PUBLIC
 	${Boost_LIBRARIES}
 )
 
-add_executable(joy_reading
-  src/joy_reading.cpp
-)
-target_link_libraries (joy_reading LINK_PUBLIC
-	${catkin_LIBRARIES}
-	${Boost_LIBRARIES}
-)
-
 
 add_executable(standingpoint
   src/standingpoint.cpp
@@ -225,14 +217,6 @@ target_link_libraries (standingpoint LINK_PUBLIC
 	${Boost_LIBRARIES}
 )
 
-
-add_executable(waypoint
-  src/waypoint.cpp
-)
-target_link_libraries (waypoint LINK_PUBLIC
-	${catkin_LIBRARIES}
-	${Boost_LIBRARIES}
-)
 
 add_executable(joy_hector
   src/joy_hector.cpp
