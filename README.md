@@ -61,7 +61,9 @@ The first number in the 59th line from the code of "src/imagesub" needs to be th
 	
 ### Before implementation:
 
-build the tracking node:
+build the tracking node:<br />
+(assume the package path is "~/catkin/src/vrui_mdf")
+
 
 	$cd vrui_mdf/scripts
 
