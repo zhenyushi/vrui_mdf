@@ -137,25 +137,6 @@ if __name__ == '__main__':
     rep_bef_1 = ['trackerIndex','trackerIndex']
     rep_aft_1 = ['trackerIndex_left','trackerIndex_right']
 
-    inserlinesnum = [  62,65,66,67,69,70,71,72,73,74,76,77,78,79,80,
-                       119,120,121,122,124,125,126,127,129,130,131,137,
-                       175,176,177,178,179,180,181,182,183,184,185,186,
-                       188,189,190,191,192,193,194,195,
-                       197,198,
-                       200,201,202,203,204,
-                       206,207,208,209,210,
-                       214,215,
-		       221,222,
-                       223,224,
-                       236,237,238,239,
-                       248,249,250,251,
-                       255,256,257,258,
-                       265,266,267,
-                       269,270,
-                       275,276,277,279,280,281,282,284,
-                       288,291,292,293,295,296,297,298,300,301,302,303,304,
-                       311,312,313,315,316,317,318,320,321,322,323,324,330,
-                       353,355]
     cnt_inser = 0
 
     inserlines = [     [62,'#include "vrui_mdf.h"'],
@@ -483,7 +464,7 @@ if __name__ == '__main__':
         if inserlines[cnt_inser][0] + drifting_lines == cnt_2:
 
             currentline = inserlines[cnt_inser][1]
-            if cnt_inser+1 < len(inserlinesnum):
+            if cnt_inser+1 < len(inserlines):
                 cnt_inser += 1
 
         if replacelinesnum[cnt_replace] + drifting_lines == cnt_2:
