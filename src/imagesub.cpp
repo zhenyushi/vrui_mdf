@@ -16,7 +16,7 @@ first person view of the turtlebot.
 #include "std_msgs/String.h"
 #include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
-
+#include <time.h>
 
 
 // define callback function in a class so that data running inside the class can be used globally
@@ -101,7 +101,7 @@ int main(int argc, char **argv)
   
 
 
-
+    std::cout<<ros::Time::now()<<std::endl;
     cv::putText( image_final, ctrl_methods.control_method, left, 0,textsize, cv::Scalar(0,255,255), thickness, 8);
     cv::putText( image_final, ctrl_methods.control_method, right, 0,textsize, cv::Scalar(0,255,255), thickness, 8);
 

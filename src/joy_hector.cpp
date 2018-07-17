@@ -1,7 +1,7 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
 #include <sensor_msgs/Joy.h>
-
+#include <time.h>
 class Joy_Listener
 {
 public:
@@ -35,7 +35,7 @@ int main(int argc, char** argv)
   ros::Publisher base_control;
   base_control = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
   geometry_msgs::Twist base_motion;
-  ros::service::waitForService("/gazebo/spawn_urdf_model", -1);
+  //ros::service::waitForService("/gazebo/spawn_urdf_model", -1);
   system("rosservice call /enable_motors true");
 
   float ra = 3;
@@ -58,6 +58,10 @@ int main(int argc, char** argv)
     << " , "<< Joy_listen.buttons[8]<< " , "<< Joy_listen.buttons[9]
     << " , "<< Joy_listen.buttons[10]<<std::endl;
 */
+
+
+  std::cout<<ros::Time::now()<<std::endl;
+
 
   base_motion.linear.x = Joy_listen.axes[4] * ra;
   base_motion.linear.y = Joy_listen.axes[3] * ra;
