@@ -43,6 +43,9 @@ for more information, go to: https://github.com/AS4SR/hector_quadrotor
 
 ### Other packages:
 
+Xbox controller in Ubuntu:<br />
+http://wiki.ros.org/joy/Tutorials/ConfiguringALinuxJoystick
+
 ROS installation tutorial: <br />
 http://wiki.ros.org/kinetic/Installation/Ubuntu<br />
 (including methods to search and install indivitual packages)<br />
