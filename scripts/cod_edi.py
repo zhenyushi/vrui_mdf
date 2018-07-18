@@ -162,6 +162,7 @@ if __name__ == '__main__':
                        [125,'gazebo_msgs::ModelState camera;'],
                        [126,'camera.model_name = "vr_view";'],
                        [127,'camera.reference_frame="world";'],
+                       [128,'ros::Time time;'],
                        [129,'vrui_mdf::Vive vive;'],
                        [130,'vive.user_name = "vive";'],
                        [131,'ros::Publisher vive_state = n.advertise<vrui_mdf::Vive>("vrui/vive", 10);'],
@@ -254,6 +255,7 @@ if __name__ == '__main__':
                        [322,'vive.ctrl_right.buttons.menu = state.getButtonState(10);'],
                        [323,'vive.ctrl_right.buttons.trigger = state.getButtonState(11);'],
                        [324,'vive.ctrl_right.buttons.trackpad = state.getButtonState(12);'],
+                       [329,'vive.stamp = time.now();'],
                        [330,'vive_state.publish(vive);'],
                        [353,'r.sleep();'],
                        [355,'}']]

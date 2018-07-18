@@ -17,7 +17,7 @@ first person view of the turtlebot.
 #include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
 #include <time.h>
-
+#include <vrui_mdf/Vive.h>
 
 // define callback function in a class so that data running inside the class can be used globally
 class Listener_image
@@ -46,6 +46,16 @@ public:
 
 };
 
+class Vive_Listener
+{
+public:
+	  vrui_mdf::Vive vive;
+
+	  void callback(const vrui_mdf::Vive& msg)
+	    {
+		vive = msg;
+	    }
+};
 
 int main(int argc, char **argv)
 {
@@ -81,7 +91,8 @@ int main(int argc, char **argv)
   listener_left.image = image_final(cv::Range(0,1200),cv::Range(0,960));
   listener_right.image = image_final(cv::Range(0,1200),cv::Range(960,1920));
 
-
+  Vive_Listener vive_data;
+  ros::Subscriber sub_vive = nh.subscribe("vrui/vive", 1, &Vive_Listener::callback, &vive_data);
 
     cv::Point left;
     left.x = 300;
@@ -99,9 +110,6 @@ int main(int argc, char **argv)
   ros::spinOnce(); 
   // ros::spin() works too, but extra code can run outside the callback function between each spinning if spinOnce() is used
   
-
-
-    std::cout<<ros::Time::now()<<std::endl;
     cv::putText( image_final, ctrl_methods.control_method, left, 0,textsize, cv::Scalar(0,255,255), thickness, 8);
     cv::putText( image_final, ctrl_methods.control_method, right, 0,textsize, cv::Scalar(0,255,255), thickness, 8);
 

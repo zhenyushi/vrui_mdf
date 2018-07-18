@@ -245,7 +245,14 @@ target_link_libraries (Vrui_server LINK_PUBLIC
 )
 
 
-
+add_executable(newcodes
+  src/newcodes.cpp
+)
+target_link_libraries (newcodes LINK_PUBLIC
+	${catkin_LIBRARIES}
+	${Boost_LIBRARIES}
+        ${OpenCV_LIBRARIES}
+)
 
 #target_link_libraries(${Boost_LIBRARIES})
 
