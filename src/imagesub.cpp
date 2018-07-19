@@ -18,6 +18,8 @@ first person view of the turtlebot.
 #include <cv_bridge/cv_bridge.h>
 #include <time.h>
 #include <vrui_mdf/Vive.h>
+#include <tf/transform_broadcaster.h> 
+#include <math.h> 
 
 // define callback function in a class so that data running inside the class can be used globally
 class Listener_image
@@ -60,7 +62,7 @@ public:
 int main(int argc, char **argv)
 {
   // setup ros node
-  ros::init(argc, argv, "listener_class");
+  ros::init(argc, argv, "image_sub");
   ros::NodeHandle nh;
   image_transport::ImageTransport it(nh);
 
@@ -94,28 +96,71 @@ int main(int argc, char **argv)
   Vive_Listener vive_data;
   ros::Subscriber sub_vive = nh.subscribe("vrui/vive", 1, &Vive_Listener::callback, &vive_data);
 
-    cv::Point left;
-    left.x = 300;
+    cv::Point left,left_lower;
+    left.x = 250;
     left.y = 500;
-    cv::Point right;
+    cv::Point right,right_lower;
     right.x = left.x + 960 - 60;
     right.y = left.y;
 
-    double textsize = 1;
-    int thickness=3;
+    left_lower = left;
+    right_lower = right;
+   
+    double textsize = 0.8;
+    int thickness=1.7;
     
+    //cv::VideoWriter video("/home/zhenyushi/catkin_ws/src/vrui_mdf/out.avi",CV_FOURCC('M','J','P','G'),30, cv::Size(1920,1200),true);
+
 
   while(ros::ok())
   {
   ros::spinOnce(); 
   // ros::spin() works too, but extra code can run outside the callback function between each spinning if spinOnce() is used
-  
-    cv::putText( image_final, ctrl_methods.control_method, left, 0,textsize, cv::Scalar(0,255,255), thickness, 8);
-    cv::putText( image_final, ctrl_methods.control_method, right, 0,textsize, cv::Scalar(0,255,255), thickness, 8);
+
+    cv::putText( image_final, ctrl_methods.control_method, left, 0,textsize, cv::Scalar(0,0,255), thickness, 8);
+    cv::putText( image_final, ctrl_methods.control_method, right, 0,textsize, cv::Scalar(0,0,255), thickness, 8);
+
+    left_lower.y = left.y + 60;
+    right_lower.y = right.y + 60;
+
+    char text[255];
+    sprintf(text, "%d . %d", (int)ros::Time::now().sec,(int)ros::Time::now().nsec);
+
+    cv::putText( image_final, text, left_lower, 0,textsize, cv::Scalar(50,0,255), thickness, 8);
+    cv::putText( image_final, text, right_lower, 0,textsize, cv::Scalar(50,0,255), thickness, 8);
+
+/*
+    double roll, pitch, yaw;
+    tf::Quaternion Qua(vive_data.vive.headset.orientation.x,vive_data.vive.headset.orientation.y,vive_data.vive.headset.orientation.z,vive_data.vive.headset.orientation.w);
+    tf::Matrix3x3 m(Qua); //rotation matrix from Quaternion
+    m.getRPY(roll, pitch, yaw); //eular angle form rotation matrix
+
+    left_lower.y = left_lower.y + 60;
+    right_lower.y = right_lower.y + 60;
 
 
+    double yaw_de = (yaw/3.1415926535897)*180;
+
+    std::cout<<yaw_de<<std::endl;
+
+    double fractpart, intpart;
+    fractpart = modf (yaw_de, &intpart);
+
+    fractpart = fractpart*100;
+    char text1[255];
+    sprintf(text1, "Yaw : %d . %d",(int)intpart, (int)fractpart);
+
+    cv::putText( image_final, text1, left_lower, 0,textsize, cv::Scalar(100,0,255), thickness, 8);
+    cv::putText( image_final, text1, right_lower, 0,textsize, cv::Scalar(100,0,255), thickness, 8);
+
+    cv::Point p_up(960+480,0),  p_down(960+480, 1200);
+    cv::line(image_final, p_up, p_down, cv::Scalar(0,255,0), 2, 8, 0);
+*/
     if(listener_left.image.cols!=0 && listener_right.image.cols!=0) 
     {
+
+    //video.write(image_final);
+
     cv::imshow("view", image_final);
     cv::waitKey(1); // necessary for imshow()
     }

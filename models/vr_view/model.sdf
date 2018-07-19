@@ -11,7 +11,15 @@
         <mass>0</mass>
       </inertial>
   
-
+ <visual name="visual">
+      <pose>0 0 0 0 1.57075 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+</visual>
 
 
       <sensor name="camera" type="wideanglecamera">
@@ -68,7 +76,15 @@
         <mass>0</mass>
       </inertial>
  
-
+ <visual name="visual">
+      <pose>0 0 0 0 1.57075 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+</visual>
 
 
 

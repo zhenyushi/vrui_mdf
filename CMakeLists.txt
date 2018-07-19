@@ -254,6 +254,15 @@ target_link_libraries (newcodes LINK_PUBLIC
         ${OpenCV_LIBRARIES}
 )
 
+add_executable(imagesub_4test
+  src/imagesub_4test.cpp
+)
+target_link_libraries (imagesub_4test LINK_PUBLIC
+	${catkin_LIBRARIES}
+	${Boost_LIBRARIES}
+        ${OpenCV_LIBRARIES}
+)
+
 #target_link_libraries(${Boost_LIBRARIES})
 
 ## Add cmake target dependencies of the library
@@ -266,6 +275,8 @@ add_dependencies(controllers vrui_mdf_generate_messages_cpp)
 
 add_dependencies(standingpoint vrui_mdf_generate_messages_cpp)
 
+add_dependencies(newcodes vrui_mdf_generate_messages_cpp)
+add_dependencies(imagesub_4test vrui_mdf_generate_messages_cpp)
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
