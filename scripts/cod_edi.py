@@ -96,33 +96,33 @@ if __name__ == '__main__':
                        [54,235],
                        [54,247],
                        [54,254],
-                       [55,335],
-                       [56,340],
-                       [57,341],
-                       [58,342],
-                       [59,343],
-                       [60,344],
-                       [61,345],
-                       [62,346],
-                       [63,347],
-                       [64,348],
-                       [65,351],
-                       [66,357],
-                       [67,358],
-                       [68,359],
-                       [69,360],
-                       [70,361],
-                       [71,364],
-                       [72,365],
-                       [73,366],
-                       [74,367],
-                       [77,370],
-                       [78,371],
-                       [79,372],
-                       [80,373],
-                       [82,374],
-                       [83,375],
-                       [84,377]]
+                       [55,345],
+                       [56,350],
+                       [57,351],
+                       [58,352],
+                       [59,353],
+                       [60,354],
+                       [61,355],
+                       [62,356],
+                       [63,357],
+                       [64,358],
+                       [65,361],
+                       [66,367],
+                       [67,368],
+                       [68,369],
+                       [69,370],
+                       [70,371],
+                       [71,374],
+                       [72,375],
+                       [73,376],
+                       [74,377],
+                       [77,380],
+                       [78,381],
+                       [79,382],
+                       [80,383],
+                       [82,384],
+                       [83,385],
+                       [84,387]]
 
 
     cnt_paste = 0
@@ -229,36 +229,46 @@ if __name__ == '__main__':
                        [280,'camera.pose.orientation.y = -1*quaternion[0];'],
                        [281,'camera.pose.orientation.z = quaternion[1];'],
                        [282,'camera.pose.orientation.w = quaternion[3];'],
-                       [284,'gazebo_pub.publish(camera);'],
-                       [288,'vive.headset = camera.pose;'],
-                       [291,'vive.ctrl_left.pose.position.x = -1*pos_left[2] - bias_2 + getmodelstate.response.pose.position.x;'],
-                       [292,'vive.ctrl_left.pose.position.y = -1*pos_left[0] - bias_0 + getmodelstate.response.pose.position.y;'],
-                       [293,'vive.ctrl_left.pose.position.z = pos_left[1] + bias_1 + getmodelstate.response.pose.position.z;'],
-                       [295,'vive.ctrl_left.pose.orientation.x = -1*quaternion_left[2];'],
-                       [296,'vive.ctrl_left.pose.orientation.y = -1*quaternion_left[0];'],
-                       [297,'vive.ctrl_left.pose.orientation.z = quaternion_left[1];'],
-                       [298,'vive.ctrl_left.pose.orientation.w = quaternion_left[3];'],
-                       [300,'vive.ctrl_left.buttons.system = state.getButtonState(2);'],
-                       [301,'vive.ctrl_left.buttons.grip = state.getButtonState(3);'],
-                       [302,'vive.ctrl_left.buttons.menu = state.getButtonState(4);'],
-                       [303,'vive.ctrl_left.buttons.trigger = state.getButtonState(5);'],
-                       [304,'vive.ctrl_left.buttons.trackpad = state.getButtonState(6);'],
-                       [311,'vive.ctrl_right.pose.position.x = -1*pos_right[2] - bias_2 + getmodelstate.response.pose.position.x;'],
-                       [312,'vive.ctrl_right.pose.position.y = -1*pos_right[0] - bias_0 + getmodelstate.response.pose.position.y;'],
-                       [313,'vive.ctrl_right.pose.position.z = pos_right[1] + bias_1 + getmodelstate.response.pose.position.z;'],
-                       [315,'vive.ctrl_right.pose.orientation.x = -1*quaternion_right[2];'],
-                       [316,'vive.ctrl_right.pose.orientation.y = -1*quaternion_right[0];'],
-                       [317,'vive.ctrl_right.pose.orientation.z = quaternion_right[1];'],
-                       [318,'vive.ctrl_right.pose.orientation.w = quaternion_right[3];'],
-                       [320,'vive.ctrl_right.buttons.system = state.getButtonState(8);'],
-                       [321,'vive.ctrl_right.buttons.grip = state.getButtonState(9);'],
-                       [322,'vive.ctrl_right.buttons.menu = state.getButtonState(10);'],
-                       [323,'vive.ctrl_right.buttons.trigger = state.getButtonState(11);'],
-                       [324,'vive.ctrl_right.buttons.trackpad = state.getButtonState(12);'],
-                       [329,'vive.stamp = time.now();'],
-                       [330,'vive_state.publish(vive);'],
-                       [353,'r.sleep();'],
-                       [355,'}']]
+
+
+                       [284,'camera.twist.linear.x = -1 * ts.linearVelocity[2];'],
+                       [285,'camera.twist.linear.y = -1 * ts.linearVelocity[0];'],
+                       [286,'camera.twist.linear.z = ts.linearVelocity[1];'],
+
+                       [288,'camera.twist.angular.x = -1 * ts.angularVelocity[2];'],
+                       [289,'camera.twist.angular.y = -1 * ts.angularVelocity[0];'],
+                       [290,'camera.twist.angular.z =  ts.angularVelocity[1];'],
+
+                       [294,'gazebo_pub.publish(camera);'],
+                       [298,'vive.headset = camera.pose;'],
+                       [301,'vive.ctrl_left.pose.position.x = -1*pos_left[2] - bias_2 + getmodelstate.response.pose.position.x;'],
+                       [302,'vive.ctrl_left.pose.position.y = -1*pos_left[0] - bias_0 + getmodelstate.response.pose.position.y;'],
+                       [303,'vive.ctrl_left.pose.position.z = pos_left[1] + bias_1 + getmodelstate.response.pose.position.z;'],
+                       [305,'vive.ctrl_left.pose.orientation.x = -1*quaternion_left[2];'],
+                       [306,'vive.ctrl_left.pose.orientation.y = -1*quaternion_left[0];'],
+                       [307,'vive.ctrl_left.pose.orientation.z = quaternion_left[1];'],
+                       [308,'vive.ctrl_left.pose.orientation.w = quaternion_left[3];'],
+                       [310,'vive.ctrl_left.buttons.system = state.getButtonState(2);'],
+                       [311,'vive.ctrl_left.buttons.grip = state.getButtonState(3);'],
+                       [312,'vive.ctrl_left.buttons.menu = state.getButtonState(4);'],
+                       [313,'vive.ctrl_left.buttons.trigger = state.getButtonState(5);'],
+                       [314,'vive.ctrl_left.buttons.trackpad = state.getButtonState(6);'],
+                       [321,'vive.ctrl_right.pose.position.x = -1*pos_right[2] - bias_2 + getmodelstate.response.pose.position.x;'],
+                       [322,'vive.ctrl_right.pose.position.y = -1*pos_right[0] - bias_0 + getmodelstate.response.pose.position.y;'],
+                       [323,'vive.ctrl_right.pose.position.z = pos_right[1] + bias_1 + getmodelstate.response.pose.position.z;'],
+                       [325,'vive.ctrl_right.pose.orientation.x = -1*quaternion_right[2];'],
+                       [326,'vive.ctrl_right.pose.orientation.y = -1*quaternion_right[0];'],
+                       [327,'vive.ctrl_right.pose.orientation.z = quaternion_right[1];'],
+                       [328,'vive.ctrl_right.pose.orientation.w = quaternion_right[3];'],
+                       [330,'vive.ctrl_right.buttons.system = state.getButtonState(8);'],
+                       [331,'vive.ctrl_right.buttons.grip = state.getButtonState(9);'],
+                       [332,'vive.ctrl_right.buttons.menu = state.getButtonState(10);'],
+                       [333,'vive.ctrl_right.buttons.trigger = state.getButtonState(11);'],
+                       [334,'vive.ctrl_right.buttons.trackpad = state.getButtonState(12);'],
+                       [339,'vive.stamp = time.now();'],
+                       [340,'vive_state.publish(vive);'],
+                       [363,'r.sleep();'],
+                       [365,'}']]
 
 
     cnt_commit = 0
@@ -384,28 +394,28 @@ if __name__ == '__main__':
                     [271,'//std::cout<<getmodelstate.response<<std::endl;'],
                     [273,'// plug in the data to message and publish it to gazebo'],
                     [274,'// coordinate in VIVE is different from gazebo, rotation matrix from VIVE to Gazebo is R = [0,0,-1; -1,0,0; 0,1,0]'],
-                    [286,'/* Custom message for ROS controller */'],
-                    [287,'/* headset */'],
-                    [290,'/* left controller */'],
-                    [306,'/* trackpad touching data not available yet */'],
-                    [307,'//vive.ctrl_left.trackpad.x = ;'],
-                    [308,'//vive.ctrl_left.trackpad.y = ;'],
-                    [310,'/* right controller */'],
-                    [326,'/* trackpad touching data not available yet */'],
-                    [327,'//vive.ctrl_left.trackpad.x = ;'],
-                    [328,'//vive.ctrl_left.trackpad.y = ;'],
-                    [333,'/******************************************/'],
-                    [334,'/* following code is from Vrui/DeviceTest */'],
-                    [335,'//devices state needs to be unlocked after read'],
-                    [339,'/* Check for a key press event: (original commitment)*/'],
-                    [350,'/* Wait for next packet: (original commitment)*/'],
-                    [353,'// rate control from ros, unnecessary, VIVE packet comes at a rate of 90hz'],
-                    [355,'//end of while(ros::ok()) loop'],
-                    [357,'//end of the huge try loop'],
-                    [363,'// After ros is shut down'],
-                    [364,'//to end (delete the if loop(946-949))'],
-                    [369,'/* Clean up and terminate: (original commitment)*/'],
-                    [377,'// end of int main()']]
+                    [296,'/* Custom message for ROS controller */'],
+                    [297,'/* headset */'],
+                    [300,'/* left controller */'],
+                    [316,'/* trackpad touching data not available yet */'],
+                    [317,'//vive.ctrl_left.trackpad.x = ;'],
+                    [318,'//vive.ctrl_left.trackpad.y = ;'],
+                    [320,'/* right controller */'],
+                    [336,'/* trackpad touching data not available yet */'],
+                    [337,'//vive.ctrl_left.trackpad.x = ;'],
+                    [338,'//vive.ctrl_left.trackpad.y = ;'],
+                    [343,'/******************************************/'],
+                    [344,'/* following code is from Vrui/DeviceTest */'],
+                    [345,'//devices state needs to be unlocked after read'],
+                    [349,'/* Check for a key press event: (original commitment)*/'],
+                    [360,'/* Wait for next packet: (original commitment)*/'],
+                    [363,'// rate control from ros, unnecessary, VIVE packet comes at a rate of 90hz'],
+                    [365,'//end of while(ros::ok()) loop'],
+                    [367,'//end of the huge try loop'],
+                    [373,'// After ros is shut down'],
+                    [374,'//to end (delete the if loop(946-949))'],
+                    [379,'/* Clean up and terminate: (original commitment)*/'],
+                    [387,'// end of int main()']]
 
 
     while line:
@@ -427,7 +437,7 @@ if __name__ == '__main__':
     
     drifting_lines = 28
 
-    total_lines = 377 + drifting_lines
+    total_lines = 387 + drifting_lines
 
     while cnt_2 <= total_lines:
 
@@ -437,11 +447,11 @@ if __name__ == '__main__':
         space_try = ''
         space_main = ''
 
-        if 224 + drifting_lines < cnt_2 < 355+ drifting_lines:
+        if 224 + drifting_lines < cnt_2 < 365+ drifting_lines:
             space_while = '     '
-        if 168 + drifting_lines < cnt_2 < 357 + drifting_lines:
+        if 168 + drifting_lines < cnt_2 < 367 + drifting_lines:
             space_try = '     '
-        if 116 + drifting_lines < cnt_2 < 377 + drifting_lines:
+        if 116 + drifting_lines < cnt_2 < 387 + drifting_lines:
             space_main = '     '
 
         if cnt_2 > 68:
