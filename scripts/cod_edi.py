@@ -229,16 +229,12 @@ if __name__ == '__main__':
                        [280,'camera.pose.orientation.y = -1*quaternion[0];'],
                        [281,'camera.pose.orientation.z = quaternion[1];'],
                        [282,'camera.pose.orientation.w = quaternion[3];'],
-
-
                        [284,'camera.twist.linear.x = -1 * ts.linearVelocity[2];'],
                        [285,'camera.twist.linear.y = -1 * ts.linearVelocity[0];'],
                        [286,'camera.twist.linear.z = ts.linearVelocity[1];'],
-
                        [288,'camera.twist.angular.x = -1 * ts.angularVelocity[2];'],
                        [289,'camera.twist.angular.y = -1 * ts.angularVelocity[0];'],
                        [290,'camera.twist.angular.z =  ts.angularVelocity[1];'],
-
                        [294,'gazebo_pub.publish(camera);'],
                        [298,'vive.headset = camera.pose;'],
                        [301,'vive.ctrl_left.pose.position.x = -1*pos_left[2] - bias_2 + getmodelstate.response.pose.position.x;'],
@@ -253,6 +249,12 @@ if __name__ == '__main__':
                        [312,'vive.ctrl_left.buttons.menu = state.getButtonState(4);'],
                        [313,'vive.ctrl_left.buttons.trigger = state.getButtonState(5);'],
                        [314,'vive.ctrl_left.buttons.trackpad = state.getButtonState(6);'],
+
+                       [315,'vive.ctrl_left.buttons.trigger_Valuator = state.getValuatorState(0);'],
+                       [316,'vive.ctrl_left.trackpad.touched = state.getButtonState(7);'],
+                       [317,'vive.ctrl_left.trackpad.x = state.getValuatorState(1);'],
+                       [318,'vive.ctrl_left.trackpad.y = state.getValuatorState(2);'],
+
                        [321,'vive.ctrl_right.pose.position.x = -1*pos_right[2] - bias_2 + getmodelstate.response.pose.position.x;'],
                        [322,'vive.ctrl_right.pose.position.y = -1*pos_right[0] - bias_0 + getmodelstate.response.pose.position.y;'],
                        [323,'vive.ctrl_right.pose.position.z = pos_right[1] + bias_1 + getmodelstate.response.pose.position.z;'],
@@ -265,6 +267,12 @@ if __name__ == '__main__':
                        [332,'vive.ctrl_right.buttons.menu = state.getButtonState(10);'],
                        [333,'vive.ctrl_right.buttons.trigger = state.getButtonState(11);'],
                        [334,'vive.ctrl_right.buttons.trackpad = state.getButtonState(12);'],
+
+                       [335,'vive.ctrl_right.buttons.trigger_Valuator = state.getValuatorState(3);'],
+                       [336,'vive.ctrl_right.trackpad.touched = state.getButtonState(13);'],
+                       [337,'vive.ctrl_right.trackpad.x = state.getValuatorState(4);'],
+                       [338,'vive.ctrl_right.trackpad.y = state.getValuatorState(5);'],
+
                        [339,'vive.stamp = time.now();'],
                        [340,'vive_state.publish(vive);'],
                        [363,'r.sleep();'],
@@ -397,13 +405,7 @@ if __name__ == '__main__':
                     [296,'/* Custom message for ROS controller */'],
                     [297,'/* headset */'],
                     [300,'/* left controller */'],
-                    [316,'/* trackpad touching data not available yet */'],
-                    [317,'//vive.ctrl_left.trackpad.x = ;'],
-                    [318,'//vive.ctrl_left.trackpad.y = ;'],
                     [320,'/* right controller */'],
-                    [336,'/* trackpad touching data not available yet */'],
-                    [337,'//vive.ctrl_left.trackpad.x = ;'],
-                    [338,'//vive.ctrl_left.trackpad.y = ;'],
                     [343,'/******************************************/'],
                     [344,'/* following code is from Vrui/DeviceTest */'],
                     [345,'//devices state needs to be unlocked after read'],
