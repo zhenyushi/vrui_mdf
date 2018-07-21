@@ -50,9 +50,16 @@ int main(int argc, char **argv)
   ros::Rate r(100);
 
      ros::Publisher gazebo_pub = nh.advertise<gazebo_msgs::ModelState>("gazebo/set_model_state", 10);
-     gazebo_msgs::ModelState camera;
+     gazebo_msgs::ModelState camera,cube_1,cube_2;
      camera.model_name = "vr_view";
      camera.reference_frame="world";
+
+     cube_1.model_name = "cube_black";
+     cube_1.reference_frame="world";
+
+     cube_2.model_name = "cube_black_0";
+     cube_2.reference_frame="world";
+
      ros::Time time;
      vrui_mdf::Vive vive;
      vive.user_name = "vive";
@@ -71,18 +78,26 @@ int main(int argc, char **argv)
   
   vive.stamp = time.now();
 
+               cube_1.pose.position.x = 2.038;
+               cube_1.pose.position.y = 1;
+	       cube_1.pose.position.z = 0;
 
-  
+               cube_2.pose.position.x = -1.972;
+               cube_2.pose.position.y = 1;
+	       cube_2.pose.position.z = 0;
 
                camera.pose.position.x = 0;
                camera.pose.position.y = 0;
                camera.pose.position.z = 1.5;
                
                geometry_msgs::Quaternion q = tf::createQuaternionMsgFromRollPitchYaw(0, 0, (float)i/1800*3.1415926);
-               
+               //geometry_msgs::Quaternion q = tf::createQuaternionMsgFromRollPitchYaw(0, 0, (float)1.57075);
                camera.pose.orientation = q;
                
-               gazebo_pub.publish(camera);
+               //gazebo_pub.publish(camera);
+               gazebo_pub.publish(cube_1);
+               gazebo_pub.publish(cube_2);
+
 
 
   i++;

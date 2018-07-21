@@ -137,8 +137,12 @@ add_message_files(DIRECTORY msg
 catkin_package(
 # CATKIN_DEPENDS message_generation message_runtime roscpp std_msgs geometry_msgs
  CATKIN_DEPENDS message_runtime roscpp std_msgs geometry_msgs
- INCLUDE_DIRS include
+ INCLUDE_DIRS include 
+ LIBRARIES ${PROJECT_NAME}
 )
+
+
+
 
 ###########
 ## Build ##
@@ -150,6 +154,7 @@ catkin_package(
 set(VRUI "$ENV{HOME}/src/Vrui-4.2-006")
 message("${VRUI}")
 include_directories(
+  ${PROJECT_NAME}
   include
   ${VRUI}
   ${catkin_INCLUDE_DIRS}
@@ -272,9 +277,7 @@ target_link_libraries (imagesub_4test LINK_PUBLIC
 # see: https://answers.ros.org/question/188982/message-headers-wont-build-first/
 add_dependencies(tracking vrui_mdf_generate_messages_cpp)
 add_dependencies(controllers vrui_mdf_generate_messages_cpp)
-
 add_dependencies(standingpoint vrui_mdf_generate_messages_cpp)
-
 add_dependencies(newcodes vrui_mdf_generate_messages_cpp)
 add_dependencies(imagesub_4test vrui_mdf_generate_messages_cpp)
 ## Declare a C++ executable
@@ -331,6 +334,8 @@ add_dependencies(imagesub_4test vrui_mdf_generate_messages_cpp)
 #   # myfile2
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
+
+
 
 #############
 ## Testing ##
