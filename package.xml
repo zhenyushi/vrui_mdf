@@ -96,7 +96,6 @@
   <exec_depend>image_transport</exec_depend>
   <exec_depend>rviz</exec_depend>
 
-
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <!-- Other tools can request additional information be placed here -->

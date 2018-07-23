@@ -335,6 +335,9 @@ add_dependencies(imagesub_4test vrui_mdf_generate_messages_cpp)
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
 
+install(DIRECTORY 
+launch
+models DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 
 #############
@@ -349,3 +352,4 @@ add_dependencies(imagesub_4test vrui_mdf_generate_messages_cpp)
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+

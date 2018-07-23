@@ -152,8 +152,11 @@ int main(int argc, char **argv)
     cv::putText( image_final, text1, left_lower, 0,textsize, cv::Scalar(100,0,255), thickness, 8);
     cv::putText( image_final, text1, right_lower, 0,textsize, cv::Scalar(100,0,255), thickness, 8);
 
-    cv::Point p_up(960+480,0),  p_down(960+480, 1200);
-    cv::line(image_final, p_up, p_down, cv::Scalar(0,255,0), 2, 8, 0);
+    cv::Point p_up(960+480,0),  p_down(960+480, 580);
+    cv::line(image_final, p_up, p_down, cv::Scalar(0,0,255), 2, 4, 0);
+
+    cv::Point q_up(960+480,620),  q_down(960+480, 1200);
+    cv::line(image_final, q_up, q_down, cv::Scalar(0,0,255), 2, 4, 0);
 
     if(listener_left.image.cols!=0 && listener_right.image.cols!=0) 
     {

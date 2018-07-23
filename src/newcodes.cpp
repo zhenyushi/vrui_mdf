@@ -78,11 +78,11 @@ int main(int argc, char **argv)
   
   vive.stamp = time.now();
 
-               cube_1.pose.position.x = 2.038;
+               cube_1.pose.position.x = 2.037;
                cube_1.pose.position.y = 1;
 	       cube_1.pose.position.z = 0;
 
-               cube_2.pose.position.x = -1.972;
+               cube_2.pose.position.x = -1.970;
                cube_2.pose.position.y = 1;
 	       cube_2.pose.position.z = 0;
 
