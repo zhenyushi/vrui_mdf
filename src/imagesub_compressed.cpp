@@ -27,18 +27,10 @@ class Listener_image
 public:
 	  cv::Mat image;
 
-          int sec;
-
-          int nsec;
-
-	  void callback(const sensor_msgs::ImageConstPtr& msg)
+	  void callback(const sensor_msgs::CompressedImageConstPtr& msg)
 	    {
-            cv_bridge::toCvShare(msg, "bgr8")->image.copyTo(image); //copy image data to the image under the same class, which will be assign as a pointer
-
-            sec = msg->header.stamp.sec;
-            nsec = msg->header.stamp.nsec;
-
-
+            //cv_bridge::toCvShare(msg, "bgr8")->image.copyTo(image); //copy image data to the image under the same class, which will be assign as a pointer
+            cv::imdecode(cv::Mat(msg->data),1).copyTo(image);;
 	    }
 
 };
@@ -85,8 +77,12 @@ int main(int argc, char **argv)
 
   //define class for callback class and subscriber
   Listener_image listener_left,listener_right;
-  image_transport::Subscriber sub_left = it.subscribe("/camera/rgb/left_eye", 1, &Listener_image::callback, &listener_left);
-  image_transport::Subscriber sub_right = it.subscribe("/camera/rgb/right_eye", 1, &Listener_image::callback, &listener_right);
+  //image_transport::Subscriber sub_left = it.subscribe("/camera/rgb/left_eye/compressed", 1, &Listener_image::callback, &listener_left);
+  //image_transport::Subscriber sub_right = it.subscribe("/camera/rgb/right_eye/compressed", 1, &Listener_image::callback, &listener_right);
+
+  ros::Subscriber sub_le = nh.subscribe("/camera/rgb/left_eye/compressed", 1, &Listener_image::callback, &listener_left);
+  ros::Subscriber sub_ri = nh.subscribe("/camera/rgb/right_eye/compressed", 1, &Listener_image::callback, &listener_right);
+
 
   Listener_ctrlMethod ctrl_methods;
   ctrl_methods.control_method = "Velocity";
@@ -118,18 +114,14 @@ int main(int argc, char **argv)
     double textsize = 0.8;
     int thickness=1.7;
     
-    cv::VideoWriter video("/home/zhenyushi/catkin_ws/src/vrui_mdf/out.avi",CV_FOURCC('M','J','P','G'),30, cv::Size(1920,1200),true);
+    //cv::VideoWriter video("/home/zhenyushi/catkin_ws/src/vrui_mdf/out.avi",CV_FOURCC('M','J','P','G'),30, cv::Size(1920,1200),true);
 
-
-    int sum = 0;
-    int step = 1;
-    int average = 0;
 
   while(ros::ok())
   {
   ros::spinOnce(); 
   // ros::spin() works too, but extra code can run outside the callback function between each spinning if spinOnce() is used
-/*
+
     cv::putText( image_final, ctrl_methods.control_method, left, 0,textsize, cv::Scalar(0,0,255), thickness, 8);
     cv::putText( image_final, ctrl_methods.control_method, right, 0,textsize, cv::Scalar(0,0,255), thickness, 8);
 
@@ -137,46 +129,12 @@ int main(int argc, char **argv)
     right_lower.y = right.y + 60;
 
     char text[255];
-    sprintf(text, "time: %d . %d", (int)ros::Time::now().sec,(int)ros::Time::now().nsec);
+    sprintf(text, "%d . %d", (int)ros::Time::now().sec,(int)ros::Time::now().nsec);
 
     cv::putText( image_final, text, left_lower, 0,textsize, cv::Scalar(50,0,255), thickness, 8);
     cv::putText( image_final, text, right_lower, 0,textsize, cv::Scalar(50,0,255), thickness, 8);
 
-    left_lower.y = left_lower.y + 60;
-    right_lower.y = right_lower.y + 60;
-
-    char text2[255];
-    sprintf(text2, "time_lag: %d . %d", (int)ros::Time::now().sec - listener_left.sec,(int)ros::Time::now().nsec - listener_left.nsec);
-
-    cv::putText( image_final, text2, left_lower, 0,textsize, cv::Scalar(50,0,255), thickness, 8);
-    cv::putText( image_final, text2, right_lower, 0,textsize, cv::Scalar(50,0,255), thickness, 8);
-
-    ros::Time time_now = ros::Time::now();
-
-    int sec_check = (int)time_now.sec - listener_left.sec;
-    int nesc_step = (int)time_now.nsec - listener_left.nsec;
-
-
-    if(sec_check == 0 && nesc_step > 0)
-    {
-    sum = sum + nesc_step / 1000000;
-    average = sum / step;
-    step = step + 1;
-    }
-
-    std::cout<<average << " , "<<step<<" , "<< sum << " ; " << nesc_step<< " ,, "<<time_now.sec<<" , "<<listener_left.nsec<<std::endl;
-
-
-    left_lower.y = left_lower.y + 60;
-    right_lower.y = right_lower.y + 60;
-
-    char lag[255];
-    sprintf(lag, "average_lag: %d",(int)average/1000000);
-
-    cv::putText( image_final, lag, left_lower, 0,textsize, cv::Scalar(50,0,255), thickness, 8);
-    cv::putText( image_final, lag, right_lower, 0,textsize, cv::Scalar(50,0,255), thickness, 8);
-
-
+/*
     double roll, pitch, yaw;
     tf::Quaternion Qua(vive_data.vive.headset.orientation.x,vive_data.vive.headset.orientation.y,vive_data.vive.headset.orientation.z,vive_data.vive.headset.orientation.w);
     tf::Matrix3x3 m(Qua); //rotation matrix from Quaternion
@@ -188,7 +146,7 @@ int main(int argc, char **argv)
 
     double yaw_de = (yaw/3.1415926535897)*180;
 
-    //std::cout<<yaw_de<<std::endl;
+    std::cout<<yaw_de<<std::endl;
 
     double fractpart, intpart;
     fractpart = modf (yaw_de, &intpart);
@@ -200,28 +158,23 @@ int main(int argc, char **argv)
     cv::putText( image_final, text1, left_lower, 0,textsize, cv::Scalar(100,0,255), thickness, 8);
     cv::putText( image_final, text1, right_lower, 0,textsize, cv::Scalar(100,0,255), thickness, 8);
 
-    cv::Point p_up(960+480,0),  p_down(960+480, 580);
-    cv::line(image_final, p_up, p_down, cv::Scalar(0,0,255), 2, 4, 0);
-
-    cv::Point q_up(960+480,620),  q_down(960+480, 1200);
-    cv::line(image_final, q_up, q_down, cv::Scalar(0,0,255), 2, 4, 0);
+    cv::Point p_up(960+480,0),  p_down(960+480, 1200);
+    cv::line(image_final, p_up, p_down, cv::Scalar(0,255,0), 2, 8, 0);
 */
-
     if(listener_left.image.cols!=0 && listener_right.image.cols!=0) 
     {
 
-    video.write(image_final);
-
-    }
-
-    if(listener_left.image.cols!=0 && listener_right.image.cols!=0) 
-    {
+    //video.write(image_final);
 
     cv::imshow("view", image_final);
     cv::waitKey(1); // necessary for imshow()
     }
-  //r.sleep();
+  r.sleep();
   }
+
+
+
+
 
 
   return 0;

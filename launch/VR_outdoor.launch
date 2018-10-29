@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<launch>
+
+	 <!-- "RunViveTracker.sh" -->
+         <node name="Vrui_server" pkg="vrui_mdf" type="Vrui_server"/>
+
+  	 <!-- Start Gazebo with wg world running in (max) realtime -->
+  	 <include file="$(find hector_gazebo_worlds)/launch/rolling_landscape_120m.launch"/>
+
+
+	  <!-- talk to vrui server -->
+          <node name="tracking" pkg="vrui_mdf" type="tracking"/>
+
+          <!-- display for Vive HMD -->
+          <!--node name="imagesub" pkg="vrui_mdf" type="imagesub"/-->
+
+
+	  <!-- spawn model for controller.cpp -->
+	  <node name="spawn_model_liftcontroller" pkg="gazebo_ros" type="spawn_model"
+	  args="-file $(find vrui_mdf)/models/controller/model.sdf -sdf -model waypoint 
+	  -x 0 -y 0 -z 1" output="screen" />
+
+	  <!-- use left trigger to change standingpoint -->
+          <node name="standingpoint" pkg="vrui_mdf" type="standingpoint"/>
+
+</launch>

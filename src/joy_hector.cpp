@@ -33,7 +33,7 @@ int main(int argc, char** argv)
   ros::Subscriber joy_sub = n.subscribe("joy", 10, &Joy_Listener::joyCallback, &Joy_listen);
 
   ros::Publisher base_control;
-  base_control = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
+  base_control = n.advertise<geometry_msgs::Twist>("/mobile_base/commands/velocity", 1);
   geometry_msgs::Twist base_motion;
   //ros::service::waitForService("/gazebo/spawn_urdf_model", -1);
   system("rosservice call /enable_motors true");

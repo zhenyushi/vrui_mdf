@@ -257,8 +257,10 @@ public:
 
 			}
 
-			float length_x = 2 * roll_len; 
-			float length_z = 0.8 * roll_len;
+                        float ratio = 1;
+
+			float length_x = 2 * roll_len * ratio; 
+			float length_z = 0.8 * roll_len * ratio;
 			waypoint.pose.position.x = vive.ctrl_right.pose.position.x - (m[0][0]*length_x) + (m[0][2]*length_z);
 			waypoint.pose.position.y = vive.ctrl_right.pose.position.y - (m[1][0]*length_x) + (m[1][2]*length_z);
 			waypoint.pose.position.z = vive.ctrl_right.pose.position.z - (m[2][0]*length_x) + (m[2][2]*length_z);
@@ -532,8 +534,6 @@ int main(int argc, char **argv)
 			ThrowTo.throw_state.pose = Way_point_controller.get_state.response.pose;
 			break;
 		  }
-
-
 	}
 
 

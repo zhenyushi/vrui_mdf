@@ -5,8 +5,10 @@
 	 <!-- "RunViveTracker.sh" -->
          <node name="Vrui_server" pkg="vrui_mdf" type="Vrui_server"/>
 
+	 <!-- "Gazebo" -->
+
   	 <!-- Start Gazebo with wg world running in (max) realtime -->
-  	 <include file="$(find hector_gazebo_worlds)/launch/rolling_landscape_120m.launch"/>
+  	 <!--include file="$(find hector_gazebo_worlds)/launch/rolling_landscape_120m.launch"/-->
 
   	 <!-- Spawn simulated quadrotor uav -->
   	 <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch" >
@@ -18,11 +20,29 @@
 		"/>
 	  </include>
 
+
+  <arg name="world" default="worlds/empty.world"/>
+  <!--arg name="world" value="$(find hector_gazebo_worlds)/worlds/rolling_landscape_120m.world"/-->
+  <!--arg name="world" value="$(find hector_gazebo_worlds)/worlds/willow_garage.world"/--> 
+  <arg name="gui" default="true"/>
+  <arg name="args" default=""/>
+  
+  <param name="/use_sim_time" value="true" />
+
+  <node name="gazebo" pkg="gazebo_ros" type="gzserver" args="$(arg world) $(arg args)" respawn="false" output="screen"/>
+  
+
+  <group if="$(arg gui)">
+    <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" output="screen"/>
+  </group>
+
+
+
 	  <!-- talk to vrui server -->
           <node name="tracking" pkg="vrui_mdf" type="tracking"/>
 
           <!-- display for Vive HMD -->
-          <node name="imagesub" pkg="vrui_mdf" type="imagesub_4test"/>
+          <!--node name="imagesub" pkg="vrui_mdf" type="imagesub_4test"/-->
 
 
           <!-- test -->
@@ -37,7 +57,7 @@
           <node name="newcodes" pkg="vrui_mdf" type="newcodes"/>
 
           <!-- use right controller to control the robot -->
-          <node name="controllers_hector" pkg="vrui_mdf" type="controllers_hector"/>
+          <!--node name="controllers_hector" pkg="vrui_mdf" type="controllers_hector"/-->
 
 	  <!-- spawn model for controller.cpp -->
 	  <node name="spawn_model_liftcontroller" pkg="gazebo_ros" type="spawn_model"
