@@ -6,6 +6,10 @@
 
 ![figure_1](https://user-images.githubusercontent.com/24307076/42660737-0c8e63b0-85fa-11e8-95ff-bbf9ec9a4d53.png)
 
+### Demo Video 
+
+https://www.youtube.com/watch?v=fZ7kt_WORCY
+
 ### Software:
 
 OS:     Ubuntu 16.04<br />
@@ -76,6 +80,12 @@ build the tracking node:<br />
 	(Assume the work space is ~/catkin_ws, and the codes start reading from there)
 
 	$rosrun vrui_mdf cod_edi.py
+
+THen you can compile the package with:
+
+	$cd ~/catkin_ws
+	
+	$catkin_make
 
 model file path in following codes need to be changed according to the local path:<br />
 tracking.cpp, controllers.cpp (all the other controllers), standingpoint.cpp, joy_hector.cpp<br />
