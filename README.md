@@ -27,7 +27,7 @@ Vrui:   4.5<br />
 
 
 ### Vrui:
-releasing time line of vrui: <br />
+Releasing time line of vrui: <br />
 http://idav.ucdavis.edu/~okreylos/
 
 The newest version 4.5-004 was released on 05/17/2018 :<br />
