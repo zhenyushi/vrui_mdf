@@ -1,6 +1,11 @@
 # vrui_mdf
 "Vrui modified" for use with HTC Vive and ROS + Gazebo 
 
+### Caution
+
+In case that if Vrui have a new version released and it's make it an issue to build, please change it to the right version for line 154 in CMakeLists.txt if we're not changing it in time.
+
+We're cleaning up the code, so feel free to post an issue when there's any.
 
 ### Figur for implementation
 
