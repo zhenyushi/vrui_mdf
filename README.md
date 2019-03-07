@@ -3,7 +3,11 @@
 
 ### Caution
 
-In case that if Vrui have a new version released and it's make it an issue to build, please change it to the right version for line 154 in CMakeLists.txt if we're not changing it in time.
+Version of Vrui we're using is Vrui-4.5-001. -03/07/2019
+(will be updated)
+
+In case that if Vrui have a new version released, it's make it an issue to build and we're not changing it in time, 
+please change it to the right version for line 154 of vrui_mdf/CMakeLists.txt, line 14 of vrui_mdf/scripts/cod_edi.py.
 
 We're cleaning up the code, so feel free to post an issue when there's any.
 
