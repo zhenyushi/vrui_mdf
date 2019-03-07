@@ -151,7 +151,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 
-set(VRUI "$ENV{HOME}/src/Vrui-4.2-006")
+set(VRUI "$ENV{HOME}/src/Vrui-4.5-001")
 message("${VRUI}")
 include_directories(
   ${PROJECT_NAME}
@@ -269,7 +269,7 @@ target_link_libraries (imagesub_4test LINK_PUBLIC
 add_dependencies(tracking vrui_mdf_generate_messages_cpp)
 add_dependencies(controllers vrui_mdf_generate_messages_cpp)
 add_dependencies(standingpoint vrui_mdf_generate_messages_cpp)
-add_dependencies(newcodes vrui_mdf_generate_messages_cpp)
+##add_dependencies(newcodes vrui_mdf_generate_messages_cpp)
 add_dependencies(imagesub_4test vrui_mdf_generate_messages_cpp)
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
