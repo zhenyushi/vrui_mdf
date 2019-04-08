@@ -52,7 +52,7 @@ https://steamdb.info/depot/250823/manifests/
 
 and replace the package with the current one which is at:<br />
 
-	/.steam/steamcmd/linux32\steamapps\content\app_250820\depot_250823
+	/.local/share/Steam/steamapps/common/SteamVR
 
 Then run the script of Vrui to install<br />
 
