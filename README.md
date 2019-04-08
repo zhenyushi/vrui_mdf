@@ -27,7 +27,7 @@ https://arc.aiaa.org/doi/pdf/10.2514/6.2018-5229
 ### Target Version:
 OS:        Ubuntu 16.04<br />
 ROS:       Kinetic<br />
-Vrui:      4.6-005<br />
+Vrui:      4.6-005 (12/06/2018)<br />
 SteamVR:   1.1.3b (11/27/2018)<br />
 
 ### SteamVR:
