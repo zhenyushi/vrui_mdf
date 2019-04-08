@@ -1,7 +1,7 @@
 # vrui_mdf
 "Vrui modified" for use with HTC Vive and ROS + Gazebo 
 
-### Caution
+## Caution
 
 Version of Vrui we're using is Vrui-4.6-005. (up to 04/08/2019)
 (will be updated)
@@ -11,6 +11,7 @@ please change it to the right version for line 154 of vrui_mdf/CMakeLists.txt, l
 
 We're cleaning up the code, so feel free to post an issue when there's any.
 
+## For More Details
 ### Figure for implementation
 
 ![figure_1](https://user-images.githubusercontent.com/24307076/42660737-0c8e63b0-85fa-11e8-95ff-bbf9ec9a4d53.png)
@@ -22,8 +23,8 @@ https://www.youtube.com/watch?v=fZ7kt_WORCY
 ### Publication
 https://arc.aiaa.org/doi/pdf/10.2514/6.2018-5229
 
-### Software:
-
+## Software:
+### Target Version:
 OS:        Ubuntu 16.04<br />
 ROS:       Kinetic<br />
 Vrui:      4.6-005<br />
@@ -94,7 +95,7 @@ http://wiki.ros.org/kinetic/Installation/Ubuntu<br />
 (including methods to search and install indivitual packages)<br />
 Use last command in section 1.4 to seach for the correct name of the packages, and install them if needed.
 
-### Displays setting:
+## Displays setting:
 	
 Vive (usually named as HVR 5" in setting) needs to be set as **secondary display** on the right side of the main moniter<br />
 Resolution: 1920*1200 (**16:10**)<br />
@@ -105,7 +106,7 @@ Scale all window contents to match: Main monitor<br />
 The first number in the 59th line from the code of "src/imagesub" needs to be the width of the main monitor plus one, so change the resolution of the main monitor or change the number in the code.<br />
 
 	
-### Before implementation:
+## Before implementation:
 
 build the tracking node:<br />
 (assume the package path is "~/catkin/src/vrui_mdf")
@@ -130,7 +131,7 @@ model file path in following codes need to be changed according to the local pat
 tracking.cpp, controllers.cpp (all the other controllers), standingpoint.cpp, joy_hector.cpp<br />
 (I'll fix this ASAP)
 
-### Implementation:
+## Implementation:
 	
 	$roslaunch vrui_mdf VR_quadrotor.launch
 (using **Vive controllers** to control **quadrotor**)<br />
