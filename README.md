@@ -3,7 +3,7 @@
 
 ### Caution
 
-Version of Vrui we're using is Vrui-4.5-001. -03/07/2019
+Version of Vrui we're using is Vrui-4.6-005. (up to 04/08/2019)
 (will be updated)
 
 In case that if Vrui have a new version released, it's make it an issue to build and we're not changing it in time, 
@@ -21,16 +21,43 @@ https://www.youtube.com/watch?v=fZ7kt_WORCY
 
 ### Software:
 
-OS:     Ubuntu 16.04<br />
-ROS:    Kinetic<br />
-Vrui:   4.5<br />
+OS:        Ubuntu 16.04<br />
+ROS:       Kinetic<br />
+Vrui:      4.6-005<br />
+SteamVR:   1.1.3b (11/27/2018)<br />
+
+### SteamVR:
+SteamCMD is needed to download the right version of SteamVR, to install SteamCMD:
+
+	$ sudo apt-get install steamcmd
+	
+To use steamcmd:
+
+	$ steamcmd
+	$ login <YOUR-STEAM-NAME>  
+	$ download_depot 250820 250823 2021799642281401918
+(download_depot  _{appid}_  _{depotid}_  _{target manifestid}_)  <br />
+
+For steamvr, appid is 250820, depotid is 25083, manifestid of the target version(1.1.3b, 11/27/2018) is 2021799642281401918.<br />
+
+Look for the right version of steamvr needed in this site:<br />
+http://idav.ucdavis.edu/~okreylos/ResDev/Vrui/LinkDownload.html
+
+Manifestid can be find in this site based on the releasing date:<br />
+https://steamdb.info/depot/250823/manifests/
+
+and replace the package with the current one which is at:<br />
+
+	/.steam/steamcmd/linux32\steamapps\content\app_250820\depot_250823
+
+Then run the script of Vrui to install<br />
 
 
 ### Vrui:
 Releasing time line of vrui: <br />
 http://idav.ucdavis.edu/~okreylos/
 
-The newest version 4.5-004 was released on 05/17/2018 :<br />
+The newest version 4.6-005 (up to 04/08/2019) :<br />
 http://idav.ucdavis.edu/~okreylos/ResDev/Vrui/LinkDownload.html<br />
 (this package is based on Ubuntu 16.04, "Build-Ubuntu.sh" should work)
 
