@@ -50,7 +50,11 @@ http://idav.ucdavis.edu/~okreylos/ResDev/Vrui/LinkDownload.html
 Manifestid can be find in this site based on the releasing date:<br />
 https://steamdb.info/depot/250823/manifests/
 
-and replace the package with the current one which is at:<br />
+Usually, the depot will be downloaded to:
+
+	/.steam/steamcmd/linux32\steamapps\content\app_250820\depot_250823
+
+Replace the package with the current one which is at:<br />
 
 	/.local/share/Steam/steamapps/common/SteamVR
 
