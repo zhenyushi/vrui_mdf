@@ -19,6 +19,9 @@ We're cleaning up the code, so feel free to post an issue when there's any.
 
 https://www.youtube.com/watch?v=fZ7kt_WORCY
 
+### Publication
+https://arc.aiaa.org/doi/pdf/10.2514/6.2018-5229
+
 ### Software:
 
 OS:        Ubuntu 16.04<br />
