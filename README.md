@@ -31,7 +31,7 @@ Vrui:      4.6-005 (12/06/2018)<br />
 SteamVR:   1.1.3b (11/27/2018)<br />
 
 ### SteamVR:
-SteamCMD is needed to download the right version of SteamVR, to install SteamCMD:
+SteamCMD is needed to download the right version of SteamVR, to install SteamCMD:<br />
 (Source site: https://github.com/OSVR/OSVR-Vive/issues/20)
 
 	$ sudo apt-get install steamcmd
