@@ -40,7 +40,7 @@ To use steamcmd:
 	$ steamcmd
 	$ login <YOUR-STEAM-NAME>  
 	$ download_depot 250820 250823 2021799642281401918
-(download_depot  _{appid}_  _{depotid}_  _{target manifestid}_)  <br />
+	(download_depot  _{appid}_  _{depotid}_  _{target manifestid}_)
 
 For steamvr, appid is 250820, depotid is 25083, manifestid of the target version(1.1.3b, 11/27/2018) is 2021799642281401918.<br />
 
