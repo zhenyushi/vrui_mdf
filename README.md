@@ -71,7 +71,11 @@ http://idav.ucdavis.edu/~okreylos/ResDev/Vrui/LinkDownload.html<br />
 
 Follow the instruction on the website above to install, may need to use "sudo" to bash the script<br />
 
+### Gcc:
+To switch between different versions(may not be necessary for this repository):
 
+	$ sudo update-alternatives --config gcc
+	
 ### Turtlebot_Gazebo:
 
 Installation tutorial: <br />
