@@ -6,7 +6,7 @@
 Version of Vrui we're using is Vrui-4.6-005. (up to 04/08/2019)
 (will be updated)
 
-In case that if Vrui have a new version released, it's make it an issue to build and we're not changing it in time, 
+In case that if Vrui have a new version released, it'll make it an issue to build and we're not changing it in time, 
 please change it to the right version for line 154 of vrui_mdf/CMakeLists.txt, line 14 of vrui_mdf/scripts/cod_edi.py.
 
 We're cleaning up the code, so feel free to post an issue when there's any.
@@ -130,7 +130,7 @@ build the tracking node:<br />
 
 	$rosrun vrui_mdf cod_edi.py
 
-THen you can compile the package with:
+Then you can compile the package with:
 
 	$cd ~/catkin_ws
 	
